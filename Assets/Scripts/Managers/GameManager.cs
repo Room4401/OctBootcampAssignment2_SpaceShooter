@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public UIManager uiManager;
 
+    public List<GameObject> enemies;
     private GameObject tempEnemy;
     private bool isEnemySpawning;
 
@@ -73,6 +75,7 @@ public class GameManager : MonoBehaviour
                 tempEnemy.GetComponent<Sniper>().SetSniperEnemy();
                 break;
         }
+        enemies.Add(tempEnemy);
     }
 
     private void GetEnemySpawn()

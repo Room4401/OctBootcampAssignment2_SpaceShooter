@@ -348,6 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2621530450681678930}
+  - component: {fileID: 432709823050552624}
   - component: {fileID: 4929453625212740970}
   - component: {fileID: 4879885399153484563}
   - component: {fileID: 8231724207288104149}
@@ -374,6 +375,41 @@ Transform:
   - {fileID: 3816717181534928089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &432709823050552624
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7409056662594923527}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!50 &4929453625212740970
 Rigidbody2D:
   serializedVersion: 4
@@ -414,10 +450,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  bulletSpeed: 10
   maxHealth: 100
   regenRate: 5.07
   weaponDamage: 1
-  bulletSpeed: 10
   cam: {fileID: 0}
   bulletPrefab: {fileID: 8479828564153775510, guid: 897fb6f06229b9944aa88ad17bbab133, type: 3}
 --- !u!114 &8231724207288104149
