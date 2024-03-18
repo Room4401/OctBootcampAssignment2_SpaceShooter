@@ -9,7 +9,6 @@ public class Exploder : Enemy
         base.Start();
         health = new Health(1);
         SetEnemyType(EnemyType.Exploder);
-        Debug.Log(GetEnemyType().ToString());
     }
 
     protected override void Update()

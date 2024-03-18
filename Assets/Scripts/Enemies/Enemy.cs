@@ -28,18 +28,21 @@ public class Enemy : Moveable
 
     protected override void Move(Vector2 _target)
     {
+        Turn(_target);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+    }
+
+    protected void Turn(Vector2 _target)
+    {
         _target.x -= transform.position.x;
         _target.y -= transform.position.y;
-
         float angle = Mathf.Atan2(_target.y, _target.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     protected void SetEnemyType(EnemyType _type)
     {
-        this.type = _type;
+        type = _type;
     }
 
     public EnemyType GetEnemyType()

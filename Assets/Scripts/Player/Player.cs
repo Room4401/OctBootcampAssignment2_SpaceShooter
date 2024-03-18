@@ -10,7 +10,7 @@ public class Player : Moveable
 
     private void Start()
     {
-        this.playerRB = GetComponent<Rigidbody2D>();
+        playerRB = GetComponent<Rigidbody2D>();
         this.health = new Health(maxHealth, regenRate);
         this.weapon = new Weapon(weaponDamage, bulletSpeed);
     }
@@ -22,7 +22,7 @@ public class Player : Moveable
 
     public override void Move(Vector2 _direction, Vector2 _target)
     {
-        playerRB.velocity = _direction * speed * Time.deltaTime;
+        playerRB.velocity = _direction * speed;
         var playerScreenPos = cam.WorldToScreenPoint(transform.position);
 
         _target.x -= playerScreenPos.x;

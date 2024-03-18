@@ -1,23 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float damage, speed;
+    [SerializeField] private float damage = 1f, speed = 10f, despawnTime = 3f;
 
+    private float timer;
     private string targetTag;
     private void Update()
     {
         Move();
+        timer += Time.deltaTime;
+        if (timer > despawnTime)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    public void SetBullet(string _targetTag, float damage, float speed = 10f)
+    public void SetBullet(string _targetTag, float damage = 1f, float speed = 10f)
     {
         this.targetTag = _targetTag;
         this.damage = damage;
         this.speed = speed;
+        timer = 0;
     }
 
     private void Move()
