@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Entities")]
     [SerializeField] private Transform[] spawnPositions;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefab;
 
     [Header("Game Variables")]
     [SerializeField] private float enemySpawnRate;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void CreateEnemy()
     {
-        tempEnemy = Instantiate(enemyPrefab);
+        tempEnemy = Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)]);
         tempEnemy.transform.position = spawnPositions[Random.Range(0, spawnPositions.Length)].position;
         EnemyType tempType = tempEnemy.GetComponent<Enemy>().GetEnemyType();
         switch (tempType)
@@ -67,10 +67,11 @@ public class GameManager : MonoBehaviour
                 tempEnemy.GetComponent<Exploder>().SetExploderEnemy();
                 break;
             case EnemyType.MachineGun:
+                tempEnemy.GetComponent<MachineGun>().SetMachineGunEnemy();
                 break;
             case EnemyType.Sniper:
+                tempEnemy.GetComponent<Sniper>().SetSniperEnemy();
                 break;
-
         }
     }
 

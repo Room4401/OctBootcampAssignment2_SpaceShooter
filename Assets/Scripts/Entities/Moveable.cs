@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Moveable : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected float speed;
+    [SerializeField] protected float speed = 1f, bulletSpeed = 10f;
 
     public Health health;
     protected Weapon weapon;
@@ -32,6 +32,11 @@ public abstract class Moveable : MonoBehaviour, IDamageable
     {
         Debug.Log(this.gameObject.ToString() + "has die");
         Destroy(this.gameObject);
+    }
+
+    public void recover(float _amount)
+    {
+        health.AddHealth(_amount);
     }
 
     public virtual void GetDamage(float _damage)

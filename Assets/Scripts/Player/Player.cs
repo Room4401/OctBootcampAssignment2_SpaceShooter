@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : Moveable
 {
-    [SerializeField] private float maxHealth = 100f, regenRate = 1f, weaponDamage = 1f, bulletSpeed = 10f;
+    [SerializeField] private float maxHealth = 100f, regenRate = 1f, weaponDamage = 1f;
     [SerializeField] private Camera cam;
     [SerializeField] private Bullet bulletPrefab;
 

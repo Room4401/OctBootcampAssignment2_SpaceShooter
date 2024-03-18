@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d088c2b9db9f44ba4dd1c9092f191c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 300
+  speed: 5
   maxHealth: 100
   regenRate: 5.07
   weaponDamage: 1

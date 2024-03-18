@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Sniper : Enemy
 {
-    [SerializeField] private float attackRange = 5f, chargeRate = 2f, damage = 1f, bulletSpeed = 10f;
+    [SerializeField] private float attackRange = 5f, chargeRate = 2f, damage = 1f;
     [SerializeField] private Bullet bulletPrefab;
 
     private float timer = 0f;
@@ -51,7 +51,7 @@ public class Sniper : Enemy
         }
     }
 
-    public void SetMeleeEnemy(float _attackRange = 2f, float _chargeRate = 2f, float _damage = 1f)
+    public void SetSniperEnemy(float _attackRange = 2f, float _chargeRate = 2f, float _damage = 1f)
     {
         this.attackRange = _attackRange;
         this.chargeRate = _chargeRate;

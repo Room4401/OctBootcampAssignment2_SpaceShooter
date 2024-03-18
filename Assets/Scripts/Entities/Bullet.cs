@@ -2,18 +2,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float damage = 1f, speed = 10f, despawnTime = 3f;
+    [SerializeField] private float damage = 1f, speed = 10f;
 
-    private float timer;
     private string targetTag;
     private void Update()
     {
         Move();
-        timer += Time.deltaTime;
-        if (timer > despawnTime)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public void SetBullet(string _targetTag, float damage = 1f, float speed = 10f)
@@ -21,7 +15,6 @@ public class Bullet : MonoBehaviour
         this.targetTag = _targetTag;
         this.damage = damage;
         this.speed = speed;
-        timer = 0;
     }
 
     private void Move()

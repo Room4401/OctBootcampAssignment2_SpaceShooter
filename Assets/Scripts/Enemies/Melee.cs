@@ -15,17 +15,18 @@ public class Melee : Enemy
 
     protected override void Update()
     {
-        base.Update();
         if (target == null)
         {
             return;
         }
         if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
+            Turn(target.position);
             Attack(attackSpeed);
         }
         else
         {
+            base.Update();
             timer = 0;
         }
     }
