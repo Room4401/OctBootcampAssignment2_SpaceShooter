@@ -19,9 +19,13 @@ public class PlayerInput : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         aimingPoint = Input.mousePosition;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             player.Shoot();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            player.UseNuke();
         }
     }
 

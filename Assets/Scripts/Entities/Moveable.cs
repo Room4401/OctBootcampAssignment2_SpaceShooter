@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class Moveable : MonoBehaviour, IDamageable
 {
-    [SerializeField] protected float speed = 1f, bulletSpeed = 10f;
+    [SerializeField] protected float speed = 1f, damage = 1f, bulletSpeed = 10f, attackRate = 1f, attackRange = 10f;
 
     public Health health;
     protected Weapon weapon;
@@ -28,9 +28,8 @@ public abstract class Moveable : MonoBehaviour, IDamageable
         throw new NotImplementedException();
     }
 
-    protected virtual void Die()
+    public virtual void Die()
     {
-        Debug.Log(this.gameObject.ToString() + "has die");
         Destroy(this.gameObject);
     }
 
@@ -44,7 +43,6 @@ public abstract class Moveable : MonoBehaviour, IDamageable
         health.DeductHealth(_damage);
         if (health.GetHealth() <= 0)
         {
-            Debug.Log("Remaining health:" + health.GetHealth());
             Die();
         }
     }

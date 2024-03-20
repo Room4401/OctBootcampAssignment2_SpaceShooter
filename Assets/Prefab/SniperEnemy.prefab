@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8457963781641605432}
   - component: {fileID: 5849528985846985884}
   - component: {fileID: 164105093602085807}
-  - component: {fileID: 8705749747640923456}
+  - component: {fileID: -5040608662947986209}
   m_Layer: 0
   m_Name: SniperEnemy
   m_TagString: Enemy
@@ -212,7 +212,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8705749747640923456
+--- !u!114 &-5040608662947986209
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,11 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5964d42aa7add3742b1d5d4fcf1767d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  attackRange: 10
+  speed: 2
+  attackRange: 7
   chargeRate: 2
-  damage: 1
-  bulletSpeed: 10
+  damage: 3
+  bulletSpeed: 20
   bulletPrefab: {fileID: 8479828564153775510, guid: 897fb6f06229b9944aa88ad17bbab133, type: 3}
 --- !u!1 &6521799615116922814
 GameObject:
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.98713535, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

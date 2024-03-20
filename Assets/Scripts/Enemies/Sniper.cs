@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Sniper : Enemy
 {
-    [SerializeField] private float attackRange = 5f, chargeRate = 2f, damage = 1f;
     [SerializeField] private Bullet bulletPrefab;
 
     private float timer = 0f;
@@ -10,8 +9,8 @@ public class Sniper : Enemy
     private void Awake()
     {
         base.Start();
-        this.health = new Health(1);
-        this.weapon = new Weapon(damage, bulletSpeed);
+        health = new Health(1);
+        weapon = new Weapon(damage, bulletSpeed);
         aimLine = GetComponent<LineRenderer>();
         SetEnemyType(EnemyType.Sniper);
     }
@@ -28,7 +27,7 @@ public class Sniper : Enemy
             aimLine.SetPosition(0, transform.position);
             aimLine.SetPosition(1, target.position);
             Turn(target.position);
-            Attack(chargeRate);
+            Attack(attackRate);
         }
         else
         {
@@ -51,10 +50,11 @@ public class Sniper : Enemy
         }
     }
 
-    public void SetSniperEnemy(float _attackRange = 2f, float _chargeRate = 2f, float _damage = 1f)
+    public void SetSniperEnemy(float _attackRange = 7f, float _chargeRate = 2f, float _damage = 20f, float _bulletSpeed = 20f)
     {
-        this.attackRange = _attackRange;
-        this.chargeRate = _chargeRate;
-        this.damage = _damage;
+        bulletSpeed = _bulletSpeed;
+        attackRange = _attackRange;
+        attackRate = _chargeRate;
+        damage = _damage;
     }
 }

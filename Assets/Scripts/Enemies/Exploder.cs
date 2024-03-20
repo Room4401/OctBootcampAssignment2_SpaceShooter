@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Exploder : Enemy
 {
-    [SerializeField] private float explosionRange = 0.2f, damage = 10f;
-
     private void Awake()
     {
         base.Start();
@@ -18,16 +16,16 @@ public class Exploder : Enemy
         {
             return;
         }
-        if (Vector2.Distance(transform.position, target.position) < explosionRange)
+        if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
             target.GetComponent<IDamageable>().GetDamage(damage);
             Destroy(this.gameObject);
         }
     }
 
-    public void SetExploderEnemy(float _explosionRange = 0.2f, float _damage = 10f)
+    public void SetExploderEnemy(float _explosionRange = 0.2f, float _damage = 40f)
     {
-        this.explosionRange = _explosionRange;
-        this.damage = _damage;
+        attackRange = _explosionRange;
+        damage = _damage;
     }
 }

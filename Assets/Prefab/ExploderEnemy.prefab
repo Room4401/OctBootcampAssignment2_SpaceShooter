@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  attackRange: 0
-  attackSpeed: 1
   damage: 1
+  bulletSpeed: 10
+  attackRate: 1
+  attackRange: 0
 --- !u!1 &8434660212063913062
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ GameObject:
   - component: {fileID: 5588385836337291395}
   - component: {fileID: 6400967254836257093}
   - component: {fileID: 5888843473114729532}
-  - component: {fileID: 5090637992185422800}
+  - component: {fileID: -3063368248146218697}
   m_Layer: 0
   m_Name: ExploderEnemy
   m_TagString: Enemy
@@ -208,7 +209,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5090637992185422800
+--- !u!114 &-3063368248146218697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,6 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a1be4c6d524e9408f1a6c873294c54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  explosionRange: 0.2
-  damage: 10
+  speed: 2
+  damage: 30
+  bulletSpeed: 10
+  attackRate: 1
+  attackRange: 0.2

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     private static GameManager instance;
 
+    public static int enemyCount;
+
     [Header("Game Entities")]
     [SerializeField] private Transform[] spawnPositions;
     [SerializeField] private GameObject[] enemyPrefab;
@@ -19,7 +21,6 @@ public class GameManager : MonoBehaviour
     public ScoreManager scoreManager;
     public UIManager uiManager;
 
-    public List<GameObject> enemies;
     private GameObject tempEnemy;
     private bool isEnemySpawning;
 
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyCount = 0;
         isEnemySpawning = true;
         StartCoroutine(EnemySpawner());
     }
@@ -75,7 +77,6 @@ public class GameManager : MonoBehaviour
                 tempEnemy.GetComponent<Sniper>().SetSniperEnemy();
                 break;
         }
-        enemies.Add(tempEnemy);
     }
 
     private void GetEnemySpawn()

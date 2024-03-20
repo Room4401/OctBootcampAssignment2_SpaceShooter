@@ -1,23 +1,33 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Moveable
 {
-    [SerializeField] private float maxHealth = 100f, regenRate = 1f, weaponDamage = 1f;
+    [SerializeField] private float maxHealth = 100f, regenRate = 1f;
     [SerializeField] private Camera cam;
     [SerializeField] private Bullet bulletPrefab;
 
     private Rigidbody2D playerRB;
+    private Image buffClock;
+    private float buffTimer, buffDuration, shootTimer, buffRate, nukeCount;
+    private bool isBuffOn;
 
     private void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        this.health = new Health(maxHealth, regenRate);
-        this.weapon = new Weapon(weaponDamage, bulletSpeed);
+        buffClock = GetComponentInChildren<Image>();
+        health = new Health(maxHealth, regenRate);
+        weapon = new Weapon(damage, bulletSpeed);
     }
 
     private void Update()
     {
         health.RegenHealth();
+        SetBuffTimer();
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        }
     }
 
     public override void Move(Vector2 _direction, Vector2 _target)
@@ -34,12 +44,65 @@ public class Player : Moveable
 
     public override void Shoot()
     {
-        weapon.Shoot(bulletPrefab, this, "Enemy");
+        if (shootTimer <= 0)
+        {
+            weapon.Shoot(bulletPrefab, this, "Enemy");
+            if (isBuffOn)
+            {
+                shootTimer = buffRate;
+            }
+            else
+            {
+                shootTimer = attackRate;
+            }
+        }
     }
 
-    public override void GetDamage(float _damage)
+    public float ShowNuke()
     {
-        base.GetDamage(_damage);
+        return nukeCount;
+    }
 
+    public void AddNuke()
+    {
+        nukeCount++;
+    }
+
+    public void UseNuke()
+    {
+        if (nukeCount > 0)
+        {
+            foreach (var enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                enemy.GetComponent<Enemy>().Die();
+            }
+            nukeCount--;
+        }
+    }
+
+    private void SetBuffTimer()
+    {
+        if (buffTimer > 0 && buffDuration > 0)
+        {
+            buffClock.fillAmount = buffTimer / buffDuration;
+            buffTimer -= Time.deltaTime;
+        }
+        if (buffTimer <= 0)
+        {
+            isBuffOn = false;
+        }
+    }
+
+    public void StartBuff(float _duration, float _buffRate)
+    {
+        buffTimer = _duration;
+        buffDuration = _duration;
+        buffRate = _buffRate;
+        isBuffOn = true;
+    }
+
+    public bool BuffStatus()
+    {
+        return isBuffOn;
     }
 }

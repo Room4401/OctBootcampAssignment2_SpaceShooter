@@ -165,7 +165,6 @@ MonoBehaviour:
   enemySpawnRate: 1
   scoreManager: {fileID: 1100515413}
   uiManager: {fileID: 757171437}
-  enemies: []
 --- !u!4 &181181102
 Transform:
   m_ObjectHideFlags: 0
@@ -1463,63 +1462,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991462096}
   m_CullTransparentMesh: 1
---- !u!1001 &3340580976355134435
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.079048
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1159998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.008360108
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1292521902197106783, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6207886774215710479, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
-      propertyPath: m_Name
-      value: NukePickUp
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7b1a31c3bdf6a6c48959f9395020ae09, type: 3}
 --- !u!1001 &6115279172437309857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1572,10 +1514,6 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 4879885399153484563, guid: 7d918e6f9d880da4098ade97d0b210cc, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7409056662594923527, guid: 7d918e6f9d880da4098ade97d0b210cc, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1598,4 +1536,3 @@ SceneRoots:
   - {fileID: 757171438}
   - {fileID: 239641044}
   - {fileID: 1008156956}
-  - {fileID: 3340580976355134435}

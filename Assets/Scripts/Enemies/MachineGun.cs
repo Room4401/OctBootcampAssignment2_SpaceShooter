@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class MachineGun : Enemy
 {
-    [SerializeField] private float fireRate = 0.1f, aimRecoil = 30f, attackRange = 5f, damage = 1f;
+    [SerializeField] private float aimRecoil = 50f;
     [SerializeField] private Bullet bulletPrefab;
 
     private float timer = 0f;
     private void Awake()
     {
         base.Start();
-        this.health = new Health(1);
-        this.weapon = new Weapon(damage, bulletSpeed);
+        health = new Health(1);
+        weapon = new Weapon(damage, bulletSpeed);
         SetEnemyType(EnemyType.MachineGun);
     }
 
@@ -23,7 +23,7 @@ public class MachineGun : Enemy
         if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
             Turn(target.position);
-            Attack(fireRate);
+            Attack(attackRate);
         }
         else
         {
@@ -45,11 +45,12 @@ public class MachineGun : Enemy
         }
     }
 
-    public void SetMachineGunEnemy(float _attackRange = 2f, float _fireRate = 2f, float _recoilAngle = 30f, float _damage = 1f)
+    public void SetMachineGunEnemy(float _attackRange = 5f, float _fireRate = 0.2f, float _recoilAngle = 50f, float _damage = 2f, float _bulletSpeed = 5f)
     {
-        this.attackRange = _attackRange;
-        this.aimRecoil = _recoilAngle;
-        this.fireRate = _fireRate;
-        this.damage = _damage;
+        bulletSpeed = _bulletSpeed;
+        attackRange = _attackRange;
+        aimRecoil = _recoilAngle;
+        attackRate = _fireRate;
+        damage = _damage;
     }
 }

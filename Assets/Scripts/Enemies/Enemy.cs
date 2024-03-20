@@ -7,6 +7,7 @@ public class Enemy : Moveable
 
     protected virtual void Start()
     {
+        GameManager.enemyCount++;
         target = GameObject.FindWithTag("Player").transform;
     }
 
@@ -40,6 +41,12 @@ public class Enemy : Moveable
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    public override void Die()
+    {
+        base.Die();
+        GameManager.GetInstance().scoreManager.IncrementScore();
+    }
+
     protected void SetEnemyType(EnemyType _type)
     {
         type = _type;
@@ -48,5 +55,13 @@ public class Enemy : Moveable
     public EnemyType GetEnemyType()
     {
         return type;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
+        {
+            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+        }
     }
 }

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Melee : Enemy
 {
-    [SerializeField] private float attackRange = 0.2f, attackSpeed = 2f, damage = 1f;
-
     private float timer = 0f;
 
     private void Awake()
@@ -22,7 +20,7 @@ public class Melee : Enemy
         if (Vector2.Distance(transform.position, target.position) < attackRange)
         {
             Turn(target.position);
-            Attack(attackSpeed);
+            Attack(attackRate);
         }
         else
         {
@@ -44,10 +42,10 @@ public class Melee : Enemy
         }
     }
 
-    public void SetMeleeEnemy(float _attackRange = 0.2f, float _attackTime = 2f, float _damage = 1f)
+    public void SetMeleeEnemy(float _attackRange = 0.2f, float _attackRate = 2f, float _damage = 5f)
     {
-        this.attackRange = _attackRange;
-        this.attackSpeed = _attackTime;
-        this.damage = _damage;
+        attackRange = _attackRange;
+        attackRate = _attackRate;
+        damage = _damage;
     }
 }

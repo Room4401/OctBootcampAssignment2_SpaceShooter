@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4439154529633310319}
   - component: {fileID: 3296401450925191615}
   - component: {fileID: 7663047311512998055}
-  - component: {fileID: 3965557344303257011}
+  - component: {fileID: 4078959703404601781}
   m_Layer: 0
   m_Name: MachineGunEnemy
   m_TagString: Enemy
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3965557344303257011
+--- !u!114 &4078959703404601781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf9e4b600590a845aea98b7695555b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  bulletSpeed: 5
-  fireRate: 0.2
-  aimRecoil: 30
-  attackRange: 7
+  speed: 2
   damage: 1
+  bulletSpeed: 5
+  attackRate: 1
+  attackRange: 5
+  aimRecoil: 50
   bulletPrefab: {fileID: 8479828564153775510, guid: 897fb6f06229b9944aa88ad17bbab133, type: 3}
 --- !u!1 &5022151156619466855
 GameObject:
@@ -201,7 +201,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.36474562, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  bulletSpeed: 10
-  attackRange: 0
-  attackSpeed: 1
   damage: 1
+  bulletSpeed: 10
+  attackRate: 1
+  attackRange: 0
