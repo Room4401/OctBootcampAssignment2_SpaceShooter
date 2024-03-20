@@ -635,7 +635,7 @@ MonoBehaviour:
   maxHealth: 100
   regenRate: 1
   cam: {fileID: 0}
-  bulletPrefab: {fileID: 8479828564153775510, guid: 897fb6f06229b9944aa88ad17bbab133, type: 3}
+  bulletPrefab: {fileID: 6462857873010183650, guid: 0f976eb7333704e41934f1dca31db948, type: 3}
 --- !u!114 &8231724207288104149
 MonoBehaviour:
   m_ObjectHideFlags: 0
