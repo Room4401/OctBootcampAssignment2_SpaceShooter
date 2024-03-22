@@ -64,7 +64,10 @@ public class Player : Moveable
 
     public void AddNuke()
     {
-        nukeCount++;
+        if (nukeCount < 5)
+        {
+            nukeCount++;
+        }
     }
 
     public void UseNuke()

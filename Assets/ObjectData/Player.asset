@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   regenRate: 2
-  speed: 5
+  speed: 10
   bulletSpeed: 10
   damage: 1
   attackRate: 0.5

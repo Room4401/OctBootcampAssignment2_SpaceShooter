@@ -47,5 +47,6 @@ public class GameManager : MonoBehaviour
     {
         spawner.GetEnemySpawn();
         uiManager.UpdateHealth();
+        uiManager.UpdateNukeCount();
     }
 }
