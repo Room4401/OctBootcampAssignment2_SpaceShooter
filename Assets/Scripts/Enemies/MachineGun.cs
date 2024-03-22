@@ -9,8 +9,8 @@ public class MachineGun : Enemy
     private void Awake()
     {
         base.Start();
-        health = new Health(1);
-        weapon = new Weapon(damage, bulletSpeed);
+        health = new Health(stats.maxHealth);
+        weapon = new Weapon(stats.damage, stats.bulletSpeed);
         SetEnemyType(EnemyType.MachineGun);
     }
 
@@ -20,10 +20,10 @@ public class MachineGun : Enemy
         {
             return;
         }
-        if (Vector2.Distance(transform.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < stats.range)
         {
             Turn(target.position);
-            Attack(attackRate);
+            Attack(stats.attackRate);
         }
         else
         {
@@ -43,14 +43,5 @@ public class MachineGun : Enemy
             timer = 0;
             weapon.Shoot(bulletPrefab, this, "Player", aimRecoil);
         }
-    }
-
-    public void SetMachineGunEnemy(float _attackRange = 5f, float _fireRate = 0.2f, float _recoilAngle = 50f, float _damage = 2f, float _bulletSpeed = 5f)
-    {
-        bulletSpeed = _bulletSpeed;
-        attackRange = _attackRange;
-        aimRecoil = _recoilAngle;
-        attackRate = _fireRate;
-        damage = _damage;
     }
 }

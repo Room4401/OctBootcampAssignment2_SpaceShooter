@@ -627,13 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d088c2b9db9f44ba4dd1c9092f191c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damage: 1
-  bulletSpeed: 10
-  attackRate: 0.5
-  attackRange: 10
-  maxHealth: 100
-  regenRate: 1
+  stats: {fileID: 11400000, guid: 052cffc3664978447b26f9f69b65d190, type: 2}
   cam: {fileID: 0}
   bulletPrefab: {fileID: 6462857873010183650, guid: 0f976eb7333704e41934f1dca31db948, type: 3}
 --- !u!114 &8231724207288104149

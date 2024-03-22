@@ -477,11 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8e63c6e4289ec48b61f26f2ac3c2cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  damage: 1
-  bulletSpeed: 10
-  attackRate: 1
-  attackRange: 0.2
+  stats: {fileID: 11400000, guid: 8f514340db865cb4486df62a9adabdf4, type: 2}
 --- !u!1 &3313300002621659161
 GameObject:
   m_ObjectHideFlags: 0

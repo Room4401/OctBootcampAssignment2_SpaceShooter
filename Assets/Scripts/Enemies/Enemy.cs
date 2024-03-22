@@ -4,7 +4,7 @@ public class Enemy : Moveable
 {
     private EnemyType type;
     protected Transform target;
-
+    [SerializeField] Vector3 currentPostion;
     protected virtual void Start()
     {
         GameManager.enemyCount++;
@@ -19,18 +19,18 @@ public class Enemy : Moveable
         }
         else
         {
-            Move(speed);
+            Move(stats.speed);
         }
     }
     protected override void Move(float _speed)
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * stats.speed * Time.deltaTime);
     }
 
     protected override void Move(Vector2 _target)
     {
         Turn(_target);
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * stats.speed * Time.deltaTime);
     }
 
     protected void Turn(Vector2 _target)
@@ -43,8 +43,9 @@ public class Enemy : Moveable
 
     public override void Die()
     {
-        base.Die();
+        GameManager.GetInstance().dropItem.SpawnPickUp(transform.position);
         GameManager.GetInstance().scoreManager.IncrementScore();
+        base.Die();
     }
 
     protected void SetEnemyType(EnemyType _type)

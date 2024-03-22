@@ -7,7 +7,7 @@ public class Melee : Enemy
     private void Awake()
     {
         base.Start();
-        health = new Health(1);
+        health = new Health(stats.maxHealth);
         SetEnemyType(EnemyType.Melee);
     }
 
@@ -17,10 +17,10 @@ public class Melee : Enemy
         {
             return;
         }
-        if (Vector2.Distance(transform.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < stats.range)
         {
             Turn(target.position);
-            Attack(attackRate);
+            Attack(stats.attackRate);
         }
         else
         {
@@ -38,14 +38,7 @@ public class Melee : Enemy
         else
         {
             timer = 0;
-            target.GetComponent<IDamageable>().GetDamage(damage);
+            target.GetComponent<IDamageable>().GetDamage(stats.damage);
         }
-    }
-
-    public void SetMeleeEnemy(float _attackRange = 0.2f, float _attackRate = 2f, float _damage = 5f)
-    {
-        attackRange = _attackRange;
-        attackRate = _attackRate;
-        damage = _damage;
     }
 }

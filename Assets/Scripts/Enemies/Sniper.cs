@@ -9,8 +9,8 @@ public class Sniper : Enemy
     private void Awake()
     {
         base.Start();
-        health = new Health(1);
-        weapon = new Weapon(damage, bulletSpeed);
+        health = new Health(stats.maxHealth);
+        weapon = new Weapon(stats.damage, stats.bulletSpeed);
         aimLine = GetComponent<LineRenderer>();
         SetEnemyType(EnemyType.Sniper);
     }
@@ -21,13 +21,13 @@ public class Sniper : Enemy
         {
             return;
         }
-        if (Vector2.Distance(transform.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < stats.range)
         {
             aimLine.enabled = true;
             aimLine.SetPosition(0, transform.position);
             aimLine.SetPosition(1, target.position);
             Turn(target.position);
-            Attack(attackRate);
+            Attack(stats.attackRate);
         }
         else
         {
@@ -48,13 +48,5 @@ public class Sniper : Enemy
             timer = 0;
             weapon.Shoot(bulletPrefab, this, "Player");
         }
-    }
-
-    public void SetSniperEnemy(float _attackRange = 7f, float _chargeRate = 2f, float _damage = 20f, float _bulletSpeed = 20f)
-    {
-        bulletSpeed = _bulletSpeed;
-        attackRange = _attackRange;
-        attackRate = _chargeRate;
-        damage = _damage;
     }
 }

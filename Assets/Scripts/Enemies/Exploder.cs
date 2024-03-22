@@ -5,7 +5,7 @@ public class Exploder : Enemy
     private void Awake()
     {
         base.Start();
-        health = new Health(1);
+        health = new Health(stats.maxHealth);
         SetEnemyType(EnemyType.Exploder);
     }
 
@@ -16,16 +16,10 @@ public class Exploder : Enemy
         {
             return;
         }
-        if (Vector2.Distance(transform.position, target.position) < attackRange)
+        if (Vector2.Distance(transform.position, target.position) < stats.range)
         {
-            target.GetComponent<IDamageable>().GetDamage(damage);
+            target.GetComponent<IDamageable>().GetDamage(stats.damage);
             Destroy(this.gameObject);
         }
-    }
-
-    public void SetExploderEnemy(float _explosionRange = 0.2f, float _damage = 40f)
-    {
-        attackRange = _explosionRange;
-        damage = _damage;
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class Player : Moveable
 {
-    [SerializeField] private float maxHealth = 100f, regenRate = 1f;
     [SerializeField] private Camera cam;
     [SerializeField] private Bullet bulletPrefab;
 
@@ -16,8 +15,8 @@ public class Player : Moveable
     {
         playerRB = GetComponent<Rigidbody2D>();
         buffClock = GetComponentInChildren<Image>();
-        health = new Health(maxHealth, regenRate);
-        weapon = new Weapon(damage, bulletSpeed);
+        health = new Health(stats.maxHealth, stats.regenRate);
+        weapon = new Weapon(stats.damage, stats.bulletSpeed);
     }
 
     private void Update()
@@ -32,7 +31,7 @@ public class Player : Moveable
 
     public override void Move(Vector2 _direction, Vector2 _target)
     {
-        playerRB.velocity = _direction * speed;
+        playerRB.velocity = _direction * stats.speed;
         var playerScreenPos = cam.WorldToScreenPoint(transform.position);
 
         _target.x -= playerScreenPos.x;
@@ -53,7 +52,7 @@ public class Player : Moveable
             }
             else
             {
-                shootTimer = attackRate;
+                shootTimer = stats.attackRate;
             }
         }
     }

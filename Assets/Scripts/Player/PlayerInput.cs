@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private float horizontal, vertical;
+    private bool mouseInput;
     private Vector2 aimingPoint;
     private Player player;
 
@@ -19,7 +20,15 @@ public class PlayerInput : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
         aimingPoint = Input.mousePosition;
 
-        if (Input.GetMouseButton(0))
+        if(player.BuffStatus())
+        {
+            mouseInput = Input.GetMouseButton(0);
+        }
+        else
+        {
+            mouseInput = Input.GetMouseButtonDown(0);
+        }
+        if (mouseInput)
         {
             player.Shoot();
         }
