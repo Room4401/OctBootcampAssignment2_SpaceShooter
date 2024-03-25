@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text scoreTxt;
     [SerializeField] private TMP_Text highScoreTxt;
+    [SerializeField] private TMP_Text FinalScoreTxt;
     [SerializeField] private TMP_Text healthTxt;
     [SerializeField] private GameObject nukeIndicator;
 
@@ -27,7 +28,10 @@ public class UIManager : MonoBehaviour
 
     public void UpdateHealth()
     {
-        healthTxt.SetText("Health: " + player.health.GetHealth());
+        if (player.health != null)
+        {
+            healthTxt.SetText("Health: " + player.health.GetHealth());
+        }
     }
 
     public void UpdateNukeCount()
@@ -43,5 +47,16 @@ public class UIManager : MonoBehaviour
                 nukeCount[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void UpdateFinalScore()
+    {
+
+        FinalScoreTxt.SetText("HighScore: " + GameManager.GetInstance().scoreManager.GetHighScore().ToString("00"));
+    }
+
+    public void SetPlayer(GameObject _player)
+    {
+        player = _player.GetComponent<Player>();
     }
 }

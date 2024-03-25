@@ -1,13 +1,14 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : Moveable
 {
-    [SerializeField] private Camera cam;
     [SerializeField] private Bullet bulletPrefab;
 
     private Rigidbody2D playerRB;
     private Image buffClock;
+    private Camera cam;
     private float buffTimer, buffDuration, shootTimer, buffRate, nukeCount;
     private bool isBuffOn;
 
@@ -15,6 +16,7 @@ public class Player : Moveable
     {
         playerRB = GetComponent<Rigidbody2D>();
         buffClock = GetComponentInChildren<Image>();
+        cam = FindAnyObjectByType<Camera>();
         health = new Health(stats.maxHealth, stats.regenRate);
         weapon = new Weapon(stats.damage, stats.bulletSpeed);
     }
@@ -55,6 +57,12 @@ public class Player : Moveable
                 shootTimer = stats.attackRate;
             }
         }
+    }
+
+    public override void Die()
+    {
+        GameManager.GetInstance().GameOver();
+        base.Die();
     }
 
     public float ShowNuke()
