@@ -11,7 +11,7 @@ public class Sniper : Enemy
         base.Start();
         health = new Health(stats.maxHealth);
         weapon = new Weapon(stats.damage, stats.bulletSpeed);
-        aimLine = GetComponent<LineRenderer>();
+        aimLine = GetComponentInChildren<LineRenderer>();
         SetEnemyType(EnemyType.Sniper);
     }
 

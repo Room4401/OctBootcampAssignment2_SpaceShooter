@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Moveable : MonoBehaviour, IDamageable
 {
     [SerializeField] protected MovebleData stats;
+    [SerializeField] private GameObject deathEffect;
 
     public Health health;
     protected Weapon weapon;
@@ -30,6 +31,7 @@ public abstract class Moveable : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
