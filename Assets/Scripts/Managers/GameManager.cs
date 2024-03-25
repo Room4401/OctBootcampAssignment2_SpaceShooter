@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class GameManager : MonoBehaviour
     [Header("Spawner")]
     public EnemySpawner spawner;
     public PickUpSpawner dropItem;
+
+    [Header("For reset")]
+    [SerializeField] private GameObject player;
+
+    public UnityEvent OnGameOver;
 
     public static GameManager GetInstance()
     {
@@ -35,8 +41,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawner.isEnemySpawning = true;
-        StartCoroutine(spawner.SpawnEnemy());
+        StartEnemySpawn();
     }
 
     // Update is called once per frame
@@ -45,5 +50,38 @@ public class GameManager : MonoBehaviour
         spawner.GetEnemySpawn();
         uiManager.UpdateHealth();
         uiManager.UpdateNukeCount();
+    }
+
+    public void GameOver()
+    {
+        StopAllCoroutines();
+        OnGameOver?.Invoke();
+    }
+
+    public void ResetGame()
+    {
+        foreach (Enemy enemy in FindObjectsByType<Enemy>(FindObjectsSortMode.None))
+        {
+            Destroy(enemy.gameObject);
+        }
+        foreach (PickUp item in FindObjectsByType<PickUp>(FindObjectsSortMode.None))
+        {
+            Destroy(item.gameObject);
+        }
+        foreach (Bullet bullet in FindObjectsByType<Bullet>(FindObjectsSortMode.None))
+        {
+            Destroy(bullet.gameObject);
+        }
+        GameObject tempPlayer = Instantiate(player, Vector2.zero, Quaternion.identity);
+        uiManager.SetPlayer(tempPlayer);
+        scoreManager.ResetScore();
+        StartEnemySpawn();
+    }
+
+    private void StartEnemySpawn()
+    {
+        spawner.isEnemySpawning = true;
+        StopAllCoroutines();
+        StartCoroutine(spawner.SpawnEnemy());
     }
 }

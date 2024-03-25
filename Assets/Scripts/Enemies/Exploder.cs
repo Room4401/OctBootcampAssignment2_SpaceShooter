@@ -11,7 +11,6 @@ public class Exploder : Enemy
 
     protected override void Update()
     {
-        base.Update();
         if (target == null)
         {
             return;
@@ -20,6 +19,10 @@ public class Exploder : Enemy
         {
             target.GetComponent<IDamageable>().GetDamage(stats.damage);
             Destroy(this.gameObject);
+        }
+        else
+        {
+            base.Update();
         }
     }
 }

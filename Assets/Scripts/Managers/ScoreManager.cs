@@ -8,6 +8,11 @@ public class ScoreManager : MonoBehaviour
 
     private int highScore;
 
+    void Start()
+    {
+        RetrieveHighScore();
+    }
+
     public int GetHighScore()
     {
         return highScore;
@@ -33,7 +38,13 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void ResetScore()
+    {
+        score = 0;
+        RetrieveHighScore();
+    }
+
+    private void RetrieveHighScore()
     {
         if (PlayerPrefs.HasKey("HIGHSCORE"))
         {
@@ -43,6 +54,6 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HIGHSCORE", highScore);
         }
-        OnScoreUpdated?.Invoke();
+        OnScoreUpdated.Invoke();
     }
 }

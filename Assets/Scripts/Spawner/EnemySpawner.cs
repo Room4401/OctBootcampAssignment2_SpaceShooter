@@ -8,15 +8,19 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemyPrefab;
 
     [Header("Spawn Variables")]
-    [SerializeField] private float enemySpawnRate;
+    [SerializeField] private float enemySpawnRate = 1f;
+    [SerializeField] private int spawnLimit = 50;
 
     public bool isEnemySpawning;
 
     public void CreateEnemy()
     {
-        Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)],
-            spawnPositions[Random.Range(0, spawnPositions.Length)].position,
-            Quaternion.identity);
+        if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length < spawnLimit)
+        {
+            Instantiate(enemyPrefab[Random.Range(0, enemyPrefab.Length)],
+                spawnPositions[Random.Range(0, spawnPositions.Length)].position,
+                Quaternion.identity);
+        }
     }
 
     public void GetEnemySpawn()
