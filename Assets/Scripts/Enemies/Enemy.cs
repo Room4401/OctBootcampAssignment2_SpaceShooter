@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : Moveable
@@ -7,8 +8,16 @@ public class Enemy : Moveable
     [SerializeField] Vector3 currentPostion;
     protected virtual void Start()
     {
-        GameManager.enemyCount++;
-        target = GameObject.FindWithTag("Player").transform;
+        try
+        {
+            target = GameObject.FindWithTag("Player").transform;
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), target.gameObject.GetComponent<Collider2D>());
+        }
+        catch (NullReferenceException)
+        {
+            GameManager.GetInstance().spawner.isEnemySpawning = false;
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void Update()
@@ -60,9 +69,9 @@ public class Enemy : Moveable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            Physics2D.IgnoreCollision(this.gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), collision.gameObject.GetComponent<Collider2D>());
         }
     }
 }

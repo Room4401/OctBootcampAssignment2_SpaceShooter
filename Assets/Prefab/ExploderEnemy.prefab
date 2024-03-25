@@ -1943,6 +1943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: a69dfedc97d285845bb92f6815514064, type: 2}
+  deathEffect: {fileID: 7327534885912073799, guid: 7e8bb6528e187034d8f6b0a1bd50400f, type: 3}
+  currentPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &8702555456904692051
 GameObject:
   m_ObjectHideFlags: 0

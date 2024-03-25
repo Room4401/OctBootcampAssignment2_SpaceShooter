@@ -18,4 +18,4 @@ MonoBehaviour:
   bulletSpeed: 20
   damage: 20
   attackRate: 2
-  range: 7
+  range: 10

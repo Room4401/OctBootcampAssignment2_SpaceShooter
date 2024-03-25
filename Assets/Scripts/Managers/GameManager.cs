@@ -4,14 +4,12 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
 
-    public static int enemyCount;
-
     [Header("Managers")]
     public ScoreManager scoreManager;
     public UIManager uiManager;
 
     [Header("Spawner")]
-    [SerializeField] private EnemySpawner spawner;
+    public EnemySpawner spawner;
     public PickUpSpawner dropItem;
 
     public static GameManager GetInstance()
@@ -37,7 +35,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyCount = 0;
         spawner.isEnemySpawning = true;
         StartCoroutine(spawner.SpawnEnemy());
     }
