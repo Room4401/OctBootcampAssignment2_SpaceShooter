@@ -9,14 +9,16 @@ public class Player : Moveable
     private Rigidbody2D playerRB;
     private Image buffClock;
     private Camera cam;
+    private AudioSource shootingSFX;
     private float buffTimer, buffDuration, shootTimer, buffRate, nukeCount;
     private bool isBuffOn;
 
     private void Start()
     {
+        cam = FindAnyObjectByType<Camera>();
         playerRB = GetComponent<Rigidbody2D>();
         buffClock = GetComponentInChildren<Image>();
-        cam = FindAnyObjectByType<Camera>();
+        shootingSFX = GetComponentInChildren<AudioSource>();
         health = new Health(stats.maxHealth, stats.regenRate);
         weapon = new Weapon(stats.damage, stats.bulletSpeed);
     }
@@ -47,6 +49,7 @@ public class Player : Moveable
     {
         if (shootTimer <= 0)
         {
+            shootingSFX.Play();
             weapon.Shoot(bulletPrefab, this, "Enemy");
             if (isBuffOn)
             {

@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         GameObject tempPlayer = Instantiate(player, Vector2.zero, Quaternion.identity);
         uiManager.SetPlayer(tempPlayer);
         scoreManager.ResetScore();
+        spawner.SpawnRateReset();
         StartEnemySpawn();
     }
 
