@@ -9,10 +9,11 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Variables")]
     [SerializeField] private float enemySpawnRate = 1f;
+    [SerializeField] private float difficultyRate = 1f;
     [SerializeField] private int spawnLimit = 50;
 
     public bool isEnemySpawning;
-
+    private float currentSpawnRate = 0f;
     public void CreateEnemy()
     {
         if (FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length < spawnLimit)
@@ -21,6 +22,11 @@ public class EnemySpawner : MonoBehaviour
                 spawnPositions[Random.Range(0, spawnPositions.Length)].position,
                 Quaternion.identity);
         }
+    }
+
+    public void SpawnRateReset()
+    {
+        currentSpawnRate = 0f;
     }
 
     public void GetEnemySpawn()
@@ -33,9 +39,11 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnEnemy()
     {
+        currentSpawnRate = enemySpawnRate;
         while (isEnemySpawning)
         {
-            yield return new WaitForSeconds(1.0f / enemySpawnRate);
+            currentSpawnRate += difficultyRate * Time.deltaTime;
+            yield return new WaitForSeconds(1.0f / currentSpawnRate);
             CreateEnemy();
         }
     }
