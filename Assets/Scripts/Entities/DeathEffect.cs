@@ -6,6 +6,6 @@ public class DeathEffect : MonoBehaviour
 {
     void Start()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 }
